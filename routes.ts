@@ -39,9 +39,10 @@ routes.get('/api/clients/:id', (req, res) => {
 routes.get('/*', function (req, res) {
     console.log(req.url);
     if(req.url.split('.').length>1)
-        res.sendFile('./customtoys-customers-app/dist'+req.url);
+        res.sendFile(req.url, {root: './customtoys-customers-app/dist'});
      else
-        res.sendFile('./customtoys-customers-app/dist/index.html');
+        res.sendFile('index.html', {root: './customtoys-customers-app/dist'});
+        
     
     // if(req.url.split('.').length>1)
     //     res.sendFile(path.join(__dirname + '/customtoys-customers-app/dist'+req.url));
