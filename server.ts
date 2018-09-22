@@ -18,7 +18,9 @@ app.use(express.static(__dirname + '/customtoys-customers-app'));
 
 app.use('/', routes);
 
+const port: number = +process.env.PORT || 4201;
+
 // start our server on port 4201
-app.listen(4201, 'localhost', function() {
-    console.log("Server now listening on 4201");
+app.listen(port, 'localhost', function() {
+    console.log(`Server now listening on ${port}`);
 });
