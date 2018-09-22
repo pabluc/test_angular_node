@@ -21,7 +21,7 @@ app.use('/', routes);
 const port: number = Number(process.env.PORT) || 4201;
 
 // start our server on port 4201
-app.listen(port, 'localhost', function() {
+app.listen(port, () => {
     console.log(`Server now listening on ${process.env.PORT}`);
     console.log(`Server now listening on ${port}`);
 });
