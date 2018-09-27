@@ -189,7 +189,7 @@ var Apiconfig = /** @class */ (function () {
         return this.ApiProtocol;
     };
     Apiconfig.ApiIP = "test-node-angular.herokuapp.com"; //"app-obli-devops-backend.herokuapp.com";
-    Apiconfig.ApiProtocol = "http://";
+    Apiconfig.ApiProtocol = "https://";
     Apiconfig.ApiPort = ""; //:4100
     return Apiconfig;
 }());
