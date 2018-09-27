@@ -154,12 +154,12 @@ var customer_component_1 = __webpack_require__(/*! ./customer/customer.component
 var comments_component_1 = __webpack_require__(/*! ./comments/comments.component */ "./src/app/comments/comments.component.ts");
 var projects_component_1 = __webpack_require__(/*! ./projects/projects.component */ "./src/app/projects/projects.component.ts");
 var appRoutes = [
-    { path: 'login', component: login_component_1.LoginComponent },
-    { path: 'customer', component: customer_component_1.CustomerComponent },
-    { path: 'projects/:id/comments', component: comments_component_1.CommentsComponent },
-    { path: 'projects', component: projects_component_1.ProjectsComponent },
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: '**', redirectTo: '/login' }
+    { path: '/front/login', component: login_component_1.LoginComponent },
+    { path: '/front/customer', component: customer_component_1.CustomerComponent },
+    { path: '/front/projects/:id/comments', component: comments_component_1.CommentsComponent },
+    { path: '/front/projects', component: projects_component_1.ProjectsComponent },
+    { path: '', redirectTo: '/front/login', pathMatch: 'full' },
+    { path: '**', redirectTo: '/front/login' }
 ];
 exports.Routing = router_1.RouterModule.forRoot(appRoutes);
 
@@ -658,18 +658,18 @@ var NavbarComponent = /** @class */ (function () {
     }
     NavbarComponent.prototype.ngOnInit = function () {
         if (!this.storageService.isAuthenticated()) {
-            this.router.navigate(['/login']);
+            this.router.navigate(['/front/login']);
         }
         this.checkRouting();
     };
     NavbarComponent.prototype.customer = function (event) {
-        this.router.navigateByUrl('/customer');
+        this.router.navigateByUrl('/front/customer');
     };
     NavbarComponent.prototype.projects = function (event) {
-        this.router.navigateByUrl('/projects');
+        this.router.navigateByUrl('/front/projects');
     };
     NavbarComponent.prototype.login = function (event) {
-        this.router.navigateByUrl('/login');
+        this.router.navigateByUrl('/front/login');
     };
     NavbarComponent.prototype.logout = function () {
         var _this = this;
@@ -679,7 +679,7 @@ var NavbarComponent = /** @class */ (function () {
     NavbarComponent.prototype.checkRouting = function () {
         if (this.storageService.isAuthenticated())
             if (this.storageService.getCurrentClient() && this.storageService.getCurrentClient().rut == '')
-                this.router.navigate(['/customer']);
+                this.router.navigate(['/front/customer']);
     };
     NavbarComponent = __decorate([
         core_1.Component({
