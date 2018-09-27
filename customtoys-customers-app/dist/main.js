@@ -188,9 +188,9 @@ var Apiconfig = /** @class */ (function () {
     Apiconfig.getProtocol = function () {
         return this.ApiProtocol;
     };
-    Apiconfig.ApiIP = "localhost"; //"app-obli-devops-backend.herokuapp.com";
+    Apiconfig.ApiIP = "test-node-angular.herokuapp.com"; //"app-obli-devops-backend.herokuapp.com";
     Apiconfig.ApiProtocol = "http://";
-    Apiconfig.ApiPort = "4201";
+    Apiconfig.ApiPort = "80";
     return Apiconfig;
 }());
 exports.Apiconfig = Apiconfig;
@@ -1226,7 +1226,7 @@ platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(app_module_1
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/pabluc/repositorios/AngularYNode2/server/customtoys-customers-app/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/pabluc/repositorios/test_angular_node/customtoys-customers-app/src/main.ts */"./src/main.ts");
 
 
 /***/ })
