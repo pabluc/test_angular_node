@@ -35,7 +35,7 @@ routes.get('/api/clients/:id', (req, res) => {
 }
 );
 
-
+/*
 routes.get('/*', function (req, res) {
     console.log(req.url);
     if(req.url.split('.').length>1)
@@ -50,3 +50,5 @@ routes.get('/*', function (req, res) {
     //     res.sendFile(path.join(__dirname + '/customtoys-customers-app/dist/index.html'));
     
    });
+
+   */

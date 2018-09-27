@@ -14,11 +14,11 @@ app.use(function(req, res, next) {
 // Handle POST requests that come in formatted as JSON
 app.use(express.json());
 
-app.use(express.static(__dirname + '/customtoys-customers-app'));
+app.use('/front',express.static(__dirname + '/customtoys-customers-app/dist'));
 
 app.use('/', routes);
 
-const port: number = Number(process.env.PORT) || 4201;
+const port: number = Number(process.env.PORT) || 4100; 
 
 // start our server on port 4201
 app.listen(port, () => {
