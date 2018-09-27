@@ -190,7 +190,7 @@ var Apiconfig = /** @class */ (function () {
     };
     Apiconfig.ApiIP = "test-node-angular.herokuapp.com"; //"app-obli-devops-backend.herokuapp.com";
     Apiconfig.ApiProtocol = "http://";
-    Apiconfig.ApiPort = "4100";
+    Apiconfig.ApiPort = ""; //:4100
     return Apiconfig;
 }());
 exports.Apiconfig = Apiconfig;
@@ -824,7 +824,7 @@ var CustomerService = /** @class */ (function () {
     function CustomerService(httpClient, storageService) {
         this.httpClient = httpClient;
         this.storageService = storageService;
-        this.WEB_API_URL = apiconfig_1.Apiconfig.getProtocol() + apiconfig_1.Apiconfig.getIP() + ':' + apiconfig_1.Apiconfig.getPort() + '/api/clients';
+        this.WEB_API_URL = apiconfig_1.Apiconfig.getProtocol() + apiconfig_1.Apiconfig.getIP() + apiconfig_1.Apiconfig.getPort() + '/api/clients';
     }
     CustomerService.prototype.get = function () {
         var myHeaders = new http_1.HttpHeaders({
@@ -894,7 +894,7 @@ var apiconfig_1 = __webpack_require__(/*! ../classes/apiconfig */ "./src/app/cla
 var LoginService = /** @class */ (function () {
     function LoginService(httpClient) {
         this.httpClient = httpClient;
-        this.WEB_API_URL = apiconfig_1.Apiconfig.getProtocol() + apiconfig_1.Apiconfig.getIP() + ':' + apiconfig_1.Apiconfig.getPort() + '/api/CustomerLogin';
+        this.WEB_API_URL = apiconfig_1.Apiconfig.getProtocol() + apiconfig_1.Apiconfig.getIP() + '' + apiconfig_1.Apiconfig.getPort() + '/api/CustomerLogin';
     }
     LoginService.prototype.login = function (username, password) {
         var myHeaders = new http_1.HttpHeaders({
@@ -953,7 +953,7 @@ var apiconfig_1 = __webpack_require__(/*! ../classes/apiconfig */ "./src/app/cla
 var LogoutService = /** @class */ (function () {
     function LogoutService(httpClient) {
         this.httpClient = httpClient;
-        this.WEB_API_URL = apiconfig_1.Apiconfig.getProtocol() + apiconfig_1.Apiconfig.getIP() + ':' + apiconfig_1.Apiconfig.getPort() + '/api/CustomerLogout';
+        this.WEB_API_URL = apiconfig_1.Apiconfig.getProtocol() + apiconfig_1.Apiconfig.getIP() + '' + apiconfig_1.Apiconfig.getPort() + '/api/CustomerLogout';
     }
     LogoutService.prototype.logout = function (token) {
         var myHeaders = new http_1.HttpHeaders({
@@ -1013,8 +1013,8 @@ var ProjectService = /** @class */ (function () {
     function ProjectService(httpClient, storageService) {
         this.httpClient = httpClient;
         this.storageService = storageService;
-        this.WEB_API_URL_PROJECTS = apiconfig_1.Apiconfig.getProtocol() + apiconfig_1.Apiconfig.getIP() + ':' + apiconfig_1.Apiconfig.getPort() + '/api/projects';
-        this.WEB_API_URL_CLIENTS = apiconfig_1.Apiconfig.getProtocol() + apiconfig_1.Apiconfig.getIP() + ':' + apiconfig_1.Apiconfig.getPort() + '/api/clients';
+        this.WEB_API_URL_PROJECTS = apiconfig_1.Apiconfig.getProtocol() + apiconfig_1.Apiconfig.getIP() + '' + apiconfig_1.Apiconfig.getPort() + '/api/projects';
+        this.WEB_API_URL_CLIENTS = apiconfig_1.Apiconfig.getProtocol() + apiconfig_1.Apiconfig.getIP() + '' + apiconfig_1.Apiconfig.getPort() + '/api/clients';
     }
     ProjectService.prototype.getProject = function (id_project) {
         var myHeaders = new http_1.HttpHeaders({
