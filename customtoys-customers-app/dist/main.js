@@ -658,7 +658,7 @@ var NavbarComponent = /** @class */ (function () {
     }
     NavbarComponent.prototype.ngOnInit = function () {
         if (!this.storageService.isAuthenticated()) {
-            this.router.navigate(['/front']);
+            this.router.navigate(['/login']);
         }
         this.checkRouting();
     };

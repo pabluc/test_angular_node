@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     if (!this.storageService.isAuthenticated()) {
-      this.router.navigate(['/front']);
+      this.router.navigate(['/login']);
     }
 
     this.checkRouting();
