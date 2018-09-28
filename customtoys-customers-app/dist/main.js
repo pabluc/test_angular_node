@@ -154,12 +154,12 @@ var customer_component_1 = __webpack_require__(/*! ./customer/customer.component
 var comments_component_1 = __webpack_require__(/*! ./comments/comments.component */ "./src/app/comments/comments.component.ts");
 var projects_component_1 = __webpack_require__(/*! ./projects/projects.component */ "./src/app/projects/projects.component.ts");
 var appRoutes = [
-    { path: '/front/login', component: login_component_1.LoginComponent },
-    { path: '/front/customer', component: customer_component_1.CustomerComponent },
-    { path: '/front/projects/:id/comments', component: comments_component_1.CommentsComponent },
-    { path: '/front/projects', component: projects_component_1.ProjectsComponent },
-    { path: '', redirectTo: '/front/login', pathMatch: 'full' },
-    { path: '**', redirectTo: '/front/login' }
+    { path: '/login', component: login_component_1.LoginComponent },
+    { path: '/customer', component: customer_component_1.CustomerComponent },
+    { path: '/projects/:id/comments', component: comments_component_1.CommentsComponent },
+    { path: '/projects', component: projects_component_1.ProjectsComponent },
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: '**', redirectTo: '/login' }
 ];
 exports.Routing = router_1.RouterModule.forRoot(appRoutes);
 
