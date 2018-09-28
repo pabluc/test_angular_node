@@ -15,20 +15,20 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     if (!this.storageService.isAuthenticated()) {
-      this.router.navigate(['/front/login']);
+      this.router.navigate(['/front']);
     }
 
     this.checkRouting();
   }
 
   customer(event){
-    this.router.navigateByUrl('/front/customer');
+    this.router.navigateByUrl('/customer');
   }
   projects(event){
-    this.router.navigateByUrl('/front/projects');
+    this.router.navigateByUrl('/projects');
   }
   login(event){
-    this.router.navigateByUrl('/front/login');
+    this.router.navigateByUrl('/login');
   }
   public logout(): void {
     this.logoutService.logout(this.storageService.getCurrentToken())
@@ -41,6 +41,6 @@ export class NavbarComponent implements OnInit {
   private checkRouting() {
     if (this.storageService.isAuthenticated()) 
       if(this.storageService.getCurrentClient() && this.storageService.getCurrentClient().rut=='')
-        this.router.navigate(['/front/customer']);
+        this.router.navigate(['/customer']);
   }
 }

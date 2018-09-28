@@ -658,18 +658,18 @@ var NavbarComponent = /** @class */ (function () {
     }
     NavbarComponent.prototype.ngOnInit = function () {
         if (!this.storageService.isAuthenticated()) {
-            this.router.navigate(['/front/login']);
+            this.router.navigate(['/front']);
         }
         this.checkRouting();
     };
     NavbarComponent.prototype.customer = function (event) {
-        this.router.navigateByUrl('/front/customer');
+        this.router.navigateByUrl('/customer');
     };
     NavbarComponent.prototype.projects = function (event) {
-        this.router.navigateByUrl('/front/projects');
+        this.router.navigateByUrl('/projects');
     };
     NavbarComponent.prototype.login = function (event) {
-        this.router.navigateByUrl('/front/login');
+        this.router.navigateByUrl('/login');
     };
     NavbarComponent.prototype.logout = function () {
         var _this = this;
@@ -679,7 +679,7 @@ var NavbarComponent = /** @class */ (function () {
     NavbarComponent.prototype.checkRouting = function () {
         if (this.storageService.isAuthenticated())
             if (this.storageService.getCurrentClient() && this.storageService.getCurrentClient().rut == '')
-                this.router.navigate(['/front/customer']);
+                this.router.navigate(['/customer']);
     };
     NavbarComponent = __decorate([
         core_1.Component({
