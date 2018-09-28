@@ -6,12 +6,12 @@ import {ProjectsComponent} from "./projects/projects.component";
 
 
 const appRoutes: Routes = [
-  { path: '/front/login', component: LoginComponent},
-  { path: '/front/customer', component: CustomerComponent},
-  { path: '/front/projects/:id/comments', component: CommentsComponent},
-  { path: '/front/projects', component: ProjectsComponent},
-  { path: '', redirectTo: '/front/login', pathMatch: 'full' },
-  { path: '**', redirectTo: '/front/login'}
+  { path: '/login', component: LoginComponent},
+  { path: '/customer', component: CustomerComponent},
+  { path: '/projects/:id/comments', component: CommentsComponent},
+  { path: '/projects', component: ProjectsComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login'}
 ];
 
 export const Routing = RouterModule.forRoot(appRoutes);
