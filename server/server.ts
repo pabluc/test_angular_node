@@ -2,6 +2,7 @@
 import express from 'express';
 // Put at the top
 import { routes } from './routes'; 
+import * as path from 'path';
 
 const app = express();
 
@@ -18,14 +19,16 @@ app.use('/', routes);
 
 //app.use('/front/*',express.static(__dirname + '/customtoys-customers-app/dist'));
 //app.use('/',express.static(__dirname + '/customtoys-customers-app/dist'));
-app.use('/front/*',express.static(__dirname + '../customtoys-customers-app/dist'));
-app.use('/',express.static(__dirname + '../customtoys-customers-app/dist'));
+app.use('/front/*',express.static(path.join(__dirname, '../customtoys-customers-app/dist')));
+app.use('/front',express.static(path.join(__dirname, '../customtoys-customers-app/dist')));
+app.use('/',express.static(path.join(__dirname, '../customtoys-customers-app/dist')));
 
 
 const port: number = Number(process.env.PORT) || 4100; 
 
 // start our server on port 4201
 app.listen(port, () => {
-    console.log(`Server now listening on ${process.env.PORT}`);
+    console.log(path.join(__dirname, '../customtoys-customers-app/dist'));
+    console.log(`Server now listening on ${process.env.PORT} (process.env.PORT)`);
     console.log(`Server now listening on ${port}`);
 });
