@@ -155,12 +155,12 @@ var comments_component_1 = __webpack_require__(/*! ./comments/comments.component
 var projects_component_1 = __webpack_require__(/*! ./projects/projects.component */ "./src/app/projects/projects.component.ts");
 var apiconfig_1 = __webpack_require__(/*! ./classes/apiconfig */ "./src/app/classes/apiconfig.ts");
 var appRoutes = [
-    { path: apiconfig_1.Apiconfig.getApiStartUri + 'login', component: login_component_1.LoginComponent },
-    { path: apiconfig_1.Apiconfig.getApiStartUri + 'customer', component: customer_component_1.CustomerComponent },
-    { path: apiconfig_1.Apiconfig.getApiStartUri + 'projects/:id/comments', component: comments_component_1.CommentsComponent },
-    { path: apiconfig_1.Apiconfig.getApiStartUri + 'projects', component: projects_component_1.ProjectsComponent },
-    { path: '', redirectTo: apiconfig_1.Apiconfig.getApiStartUri + 'login', pathMatch: 'full' },
-    { path: '**', redirectTo: apiconfig_1.Apiconfig.getApiStartUri + 'login' }
+    { path: apiconfig_1.Apiconfig.getApiStartUri() + 'login', component: login_component_1.LoginComponent },
+    { path: apiconfig_1.Apiconfig.getApiStartUri() + 'customer', component: customer_component_1.CustomerComponent },
+    { path: apiconfig_1.Apiconfig.getApiStartUri() + 'projects/:id/comments', component: comments_component_1.CommentsComponent },
+    { path: apiconfig_1.Apiconfig.getApiStartUri() + 'projects', component: projects_component_1.ProjectsComponent },
+    { path: '', redirectTo: apiconfig_1.Apiconfig.getApiStartUri() + 'login', pathMatch: 'full' },
+    { path: '**', redirectTo: apiconfig_1.Apiconfig.getApiStartUri() + 'login' }
 ];
 exports.Routing = router_1.RouterModule.forRoot(appRoutes);
 
@@ -665,18 +665,18 @@ var NavbarComponent = /** @class */ (function () {
     }
     NavbarComponent.prototype.ngOnInit = function () {
         if (!this.storageService.isAuthenticated()) {
-            this.router.navigate([apiconfig_1.Apiconfig.getApiStartUri + 'login']);
+            this.router.navigate([apiconfig_1.Apiconfig.getApiStartUri() + 'login']);
         }
         this.checkRouting();
     };
     NavbarComponent.prototype.customer = function (event) {
-        this.router.navigateByUrl(apiconfig_1.Apiconfig.getApiStartUri + 'customer');
+        this.router.navigateByUrl(apiconfig_1.Apiconfig.getApiStartUri() + 'customer');
     };
     NavbarComponent.prototype.projects = function (event) {
-        this.router.navigateByUrl(apiconfig_1.Apiconfig.getApiStartUri + 'projects');
+        this.router.navigateByUrl(apiconfig_1.Apiconfig.getApiStartUri() + 'projects');
     };
     NavbarComponent.prototype.login = function (event) {
-        this.router.navigateByUrl(apiconfig_1.Apiconfig.getApiStartUri + 'login');
+        this.router.navigateByUrl(apiconfig_1.Apiconfig.getApiStartUri() + 'login');
     };
     NavbarComponent.prototype.logout = function () {
         var _this = this;
@@ -686,7 +686,7 @@ var NavbarComponent = /** @class */ (function () {
     NavbarComponent.prototype.checkRouting = function () {
         if (this.storageService.isAuthenticated())
             if (this.storageService.getCurrentClient() && this.storageService.getCurrentClient().rut == '')
-                this.router.navigate([apiconfig_1.Apiconfig.getApiStartUri + 'customer']);
+                this.router.navigate([apiconfig_1.Apiconfig.getApiStartUri() + 'customer']);
     };
     NavbarComponent = __decorate([
         core_1.Component({
