@@ -10,6 +10,7 @@ import {StorageService} from "../services/storage.service";
 import {User} from "../classes/user";
 import {Client} from "../classes/client";
 import {Session} from "../classes/session";
+import {Apiconfig} from "../classes/apiconfig";
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
     ).subscribe(() => this.errorMessage = null);
 
     if (this.storageService.isAuthenticated()) {
-      this.router.navigate(['front/projects']);
+      this.router.navigate([Apiconfig.getApiStartUri + 'projects']);
     }
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -79,9 +80,9 @@ export class LoginComponent implements OnInit {
     this.storageService.setCurrentClient(client);
 
     if(this.storageService.getCurrentClient().rut!='') 
-      this.router.navigate(['front/projects']);
+      this.router.navigate([Apiconfig.getApiStartUri + 'projects']);
     else
-      this.router.navigate(['front/customer']);
+      this.router.navigate([Apiconfig.getApiStartUri + 'customer']);
   }
 
   keyDownFunction(event){

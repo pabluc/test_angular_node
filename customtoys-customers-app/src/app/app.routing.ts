@@ -3,15 +3,16 @@ import {LoginComponent} from "./login/login.component";
 import {CustomerComponent} from "./customer/customer.component";
 import {CommentsComponent} from "./comments/comments.component";
 import {ProjectsComponent} from "./projects/projects.component";
+import {Apiconfig} from "./classes/apiconfig";
 
 
 const appRoutes: Routes = [
-  { path: 'front/login', component: LoginComponent},
-  { path: 'front/customer', component: CustomerComponent},
-  { path: 'front/projects/:id/comments', component: CommentsComponent},
-  { path: 'front/projects', component: ProjectsComponent},
-  { path: '', redirectTo: 'front/login', pathMatch: 'full' },
-  { path: '**', redirectTo: 'front/login'}
+  { path: Apiconfig.getApiStartUri + 'login', component: LoginComponent},
+  { path: Apiconfig.getApiStartUri + 'customer', component: CustomerComponent},
+  { path: Apiconfig.getApiStartUri + 'projects/:id/comments', component: CommentsComponent},
+  { path: Apiconfig.getApiStartUri + 'projects', component: ProjectsComponent},
+  { path: '', redirectTo: Apiconfig.getApiStartUri + 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: Apiconfig.getApiStartUri + 'login'}
 ];
 
 export const Routing = RouterModule.forRoot(appRoutes);

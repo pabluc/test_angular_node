@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {LogoutService} from "../services/logout.service";
 import {StorageService} from "../services/storage.service";
 import {HttpResponse} from "@angular/common/http";
+import {Apiconfig} from "../classes/apiconfig";
 
 @Component({
   selector: 'app-navbar',
@@ -15,20 +16,20 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     if (!this.storageService.isAuthenticated()) {
-      this.router.navigate(['front/login']);
+      this.router.navigate([Apiconfig.getApiStartUri + 'login']);
     }
 
     this.checkRouting();
   }
 
   customer(event){
-    this.router.navigateByUrl('front/customer');
+    this.router.navigateByUrl(Apiconfig.getApiStartUri + 'customer');
   }
   projects(event){
-    this.router.navigateByUrl('front/projects');
+    this.router.navigateByUrl(Apiconfig.getApiStartUri + 'projects');
   }
   login(event){
-    this.router.navigateByUrl('front/login');
+    this.router.navigateByUrl(Apiconfig.getApiStartUri + 'login');
   }
   public logout(): void {
     this.logoutService.logout(this.storageService.getCurrentToken())
@@ -41,6 +42,6 @@ export class NavbarComponent implements OnInit {
   private checkRouting() {
     if (this.storageService.isAuthenticated()) 
       if(this.storageService.getCurrentClient() && this.storageService.getCurrentClient().rut=='')
-        this.router.navigate(['front/customer']);
+        this.router.navigate([Apiconfig.getApiStartUri + 'customer']);
   }
 }

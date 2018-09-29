@@ -153,13 +153,14 @@ var login_component_1 = __webpack_require__(/*! ./login/login.component */ "./sr
 var customer_component_1 = __webpack_require__(/*! ./customer/customer.component */ "./src/app/customer/customer.component.ts");
 var comments_component_1 = __webpack_require__(/*! ./comments/comments.component */ "./src/app/comments/comments.component.ts");
 var projects_component_1 = __webpack_require__(/*! ./projects/projects.component */ "./src/app/projects/projects.component.ts");
+var apiconfig_1 = __webpack_require__(/*! ./classes/apiconfig */ "./src/app/classes/apiconfig.ts");
 var appRoutes = [
-    { path: 'front/login', component: login_component_1.LoginComponent },
-    { path: 'front/customer', component: customer_component_1.CustomerComponent },
-    { path: 'front/projects/:id/comments', component: comments_component_1.CommentsComponent },
-    { path: 'front/projects', component: projects_component_1.ProjectsComponent },
-    { path: '', redirectTo: 'front/login', pathMatch: 'full' },
-    { path: '**', redirectTo: 'front/login' }
+    { path: apiconfig_1.Apiconfig.getApiStartUri + 'login', component: login_component_1.LoginComponent },
+    { path: apiconfig_1.Apiconfig.getApiStartUri + 'customer', component: customer_component_1.CustomerComponent },
+    { path: apiconfig_1.Apiconfig.getApiStartUri + 'projects/:id/comments', component: comments_component_1.CommentsComponent },
+    { path: apiconfig_1.Apiconfig.getApiStartUri + 'projects', component: projects_component_1.ProjectsComponent },
+    { path: '', redirectTo: apiconfig_1.Apiconfig.getApiStartUri + 'login', pathMatch: 'full' },
+    { path: '**', redirectTo: apiconfig_1.Apiconfig.getApiStartUri + 'login' }
 ];
 exports.Routing = router_1.RouterModule.forRoot(appRoutes);
 
@@ -188,9 +189,13 @@ var Apiconfig = /** @class */ (function () {
     Apiconfig.getProtocol = function () {
         return this.ApiProtocol;
     };
+    Apiconfig.getApiStartUri = function () {
+        return this.ApiStartUri;
+    };
     Apiconfig.ApiIP = "test-node-angular.herokuapp.com"; //"app-obli-devops-backend.herokuapp.com";
     Apiconfig.ApiProtocol = "https://";
     Apiconfig.ApiPort = ""; //:4100
+    Apiconfig.ApiStartUri = "front/";
     return Apiconfig;
 }());
 exports.Apiconfig = Apiconfig;
@@ -530,6 +535,7 @@ var login_service_1 = __webpack_require__(/*! ../services/login.service */ "./sr
 var customer_service_1 = __webpack_require__(/*! ../services/customer.service */ "./src/app/services/customer.service.ts");
 var storage_service_1 = __webpack_require__(/*! ../services/storage.service */ "./src/app/services/storage.service.ts");
 var session_1 = __webpack_require__(/*! ../classes/session */ "./src/app/classes/session.ts");
+var apiconfig_1 = __webpack_require__(/*! ../classes/apiconfig */ "./src/app/classes/apiconfig.ts");
 var LoginComponent = /** @class */ (function () {
     function LoginComponent(formBuilder, router, storageService, loginService, customerService) {
         this.formBuilder = formBuilder;
@@ -544,7 +550,7 @@ var LoginComponent = /** @class */ (function () {
         this._subject.subscribe(function (message) { return _this.errorMessage = message; });
         this._subject.pipe(operators_1.debounceTime(3000)).subscribe(function () { return _this.errorMessage = null; });
         if (this.storageService.isAuthenticated()) {
-            this.router.navigate(['front/projects']);
+            this.router.navigate([apiconfig_1.Apiconfig.getApiStartUri + 'projects']);
         }
         this.loginForm = this.formBuilder.group({
             username: ['', forms_1.Validators.required],
@@ -580,9 +586,9 @@ var LoginComponent = /** @class */ (function () {
         var client = data.body;
         this.storageService.setCurrentClient(client);
         if (this.storageService.getCurrentClient().rut != '')
-            this.router.navigate(['front/projects']);
+            this.router.navigate([apiconfig_1.Apiconfig.getApiStartUri + 'projects']);
         else
-            this.router.navigate(['front/customer']);
+            this.router.navigate([apiconfig_1.Apiconfig.getApiStartUri + 'customer']);
     };
     LoginComponent.prototype.keyDownFunction = function (event) {
         if (event.keyCode == 13) {
@@ -650,6 +656,7 @@ var core_1 = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/c
 var router_1 = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var logout_service_1 = __webpack_require__(/*! ../services/logout.service */ "./src/app/services/logout.service.ts");
 var storage_service_1 = __webpack_require__(/*! ../services/storage.service */ "./src/app/services/storage.service.ts");
+var apiconfig_1 = __webpack_require__(/*! ../classes/apiconfig */ "./src/app/classes/apiconfig.ts");
 var NavbarComponent = /** @class */ (function () {
     function NavbarComponent(router, storageService, logoutService) {
         this.router = router;
@@ -658,18 +665,18 @@ var NavbarComponent = /** @class */ (function () {
     }
     NavbarComponent.prototype.ngOnInit = function () {
         if (!this.storageService.isAuthenticated()) {
-            this.router.navigate(['front/login']);
+            this.router.navigate([apiconfig_1.Apiconfig.getApiStartUri + 'login']);
         }
         this.checkRouting();
     };
     NavbarComponent.prototype.customer = function (event) {
-        this.router.navigateByUrl('front/customer');
+        this.router.navigateByUrl(apiconfig_1.Apiconfig.getApiStartUri + 'customer');
     };
     NavbarComponent.prototype.projects = function (event) {
-        this.router.navigateByUrl('front/projects');
+        this.router.navigateByUrl(apiconfig_1.Apiconfig.getApiStartUri + 'projects');
     };
     NavbarComponent.prototype.login = function (event) {
-        this.router.navigateByUrl('front/login');
+        this.router.navigateByUrl(apiconfig_1.Apiconfig.getApiStartUri + 'login');
     };
     NavbarComponent.prototype.logout = function () {
         var _this = this;
@@ -679,7 +686,7 @@ var NavbarComponent = /** @class */ (function () {
     NavbarComponent.prototype.checkRouting = function () {
         if (this.storageService.isAuthenticated())
             if (this.storageService.getCurrentClient() && this.storageService.getCurrentClient().rut == '')
-                this.router.navigate(['front/customer']);
+                this.router.navigate([apiconfig_1.Apiconfig.getApiStartUri + 'customer']);
     };
     NavbarComponent = __decorate([
         core_1.Component({
