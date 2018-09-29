@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.use('/', routes);
 
-app.use('/front',express.static(__dirname + '/customtoys-customers-app/dist'));
+app.use('/front/*',express.static(__dirname + '/customtoys-customers-app/dist'));
 app.use('/',express.static(__dirname + '/customtoys-customers-app/dist'));
 
 
