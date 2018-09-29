@@ -544,7 +544,7 @@ var LoginComponent = /** @class */ (function () {
         this._subject.subscribe(function (message) { return _this.errorMessage = message; });
         this._subject.pipe(operators_1.debounceTime(3000)).subscribe(function () { return _this.errorMessage = null; });
         if (this.storageService.isAuthenticated()) {
-            this.router.navigate(['/projects']);
+            this.router.navigate(['front/projects']);
         }
         this.loginForm = this.formBuilder.group({
             username: ['', forms_1.Validators.required],
@@ -580,9 +580,9 @@ var LoginComponent = /** @class */ (function () {
         var client = data.body;
         this.storageService.setCurrentClient(client);
         if (this.storageService.getCurrentClient().rut != '')
-            this.router.navigate(['/projects']);
+            this.router.navigate(['front/projects']);
         else
-            this.router.navigate(['/customer']);
+            this.router.navigate(['front/customer']);
     };
     LoginComponent.prototype.keyDownFunction = function (event) {
         if (event.keyCode == 13) {

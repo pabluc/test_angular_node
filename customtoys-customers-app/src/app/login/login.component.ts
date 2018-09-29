@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     ).subscribe(() => this.errorMessage = null);
 
     if (this.storageService.isAuthenticated()) {
-      this.router.navigate(['/projects']);
+      this.router.navigate(['front/projects']);
     }
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -79,9 +79,9 @@ export class LoginComponent implements OnInit {
     this.storageService.setCurrentClient(client);
 
     if(this.storageService.getCurrentClient().rut!='') 
-      this.router.navigate(['/projects']);
+      this.router.navigate(['front/projects']);
     else
-      this.router.navigate(['/customer']);
+      this.router.navigate(['front/customer']);
   }
 
   keyDownFunction(event){
